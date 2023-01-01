@@ -1,3 +1,4 @@
+import 'package:elearning_app/views/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -52,6 +53,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Spacer(),
             ButtonLogin(
+              onTap: () {
+                Navigator.of(context).pushNamed(RegisterPage.route);
+              },
               backgroundColor: Colors.white,
               borderColor: R.colors.primary,
               child: Row(
@@ -71,6 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             ButtonLogin(
+              onTap: () {},
               backgroundColor: Colors.black,
               borderColor: Colors.black,
               child: Row(
@@ -102,11 +107,13 @@ class ButtonLogin extends StatelessWidget {
     required this.backgroundColor,
     required this.child,
     required this.borderColor,
+    required this.onTap,
   }) : super(key: key);
 
   final Color backgroundColor;
   final Widget child;
   final Color borderColor;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +129,7 @@ class ButtonLogin extends StatelessWidget {
             ),
             fixedSize: Size(MediaQuery.of(context).size.width * 0.8, 50),
           ),
-          onPressed: () {},
+          onPressed: onTap,
           child: child),
     );
   }

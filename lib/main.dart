@@ -1,6 +1,9 @@
 import 'package:elearning_app/views/login_page.dart';
+import 'package:elearning_app/views/main_page.dart';
 import 'package:elearning_app/views/splash_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'views/register_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +34,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => const SplashScreen(),
         LoginPage.route: (context) => const LoginPage(),
+        RegisterPage.route: (context) => const RegisterPage(),
+        MainPage.route: (context) => const MainPage(),
       },
     );
   }
