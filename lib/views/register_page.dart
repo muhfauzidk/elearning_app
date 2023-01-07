@@ -35,16 +35,25 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       backgroundColor: R.colors.grey,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
-          "Yuk isi data diri",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight + 40),
+        child: AppBar(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(25.0),
+              bottomRight: Radius.circular(25.0),
+            ),
+          ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
+          title: Text(
+            "Yuk isi data diri",
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
+            ),
           ),
         ),
       ),
