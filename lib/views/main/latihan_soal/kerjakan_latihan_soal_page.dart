@@ -3,6 +3,7 @@ import 'package:elearning_app/helpers/user_email.dart';
 import 'package:elearning_app/models/kerjakan_soal_list.dart';
 import 'package:elearning_app/models/network_response.dart';
 import 'package:elearning_app/repository/latihan_soal_api.dart';
+import 'package:elearning_app/views/main/latihan_soal/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
@@ -87,15 +88,15 @@ class _KerjakanLatihanSoalPageState extends State<KerjakanLatihanSoalPage>
                           final result =
                               await LatihanSoalApi().postStudentAnswer(payload);
                           if (result.status == Status.success) {
-                            // Navigator.of(context).push(
-                            //   MaterialPageRoute(
-                            //     builder: (BuildContext context) {
-                            //       return ResultPage(
-                            //         exerciseId: widget.id,
-                            //       );
-                            //     },
-                            //   ),
-                            // );
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return ResultPage(
+                                    exerciseId: widget.id,
+                                  );
+                                },
+                              ),
+                            );
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content:
