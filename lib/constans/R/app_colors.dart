@@ -8,4 +8,5 @@ class AppColors {
   Color blackButtonLogin = Color(0xff1A1F26);
   Color greyBorderForm = Color(0xffD6D6D6);
   Color greyHintText = Color(0xffAAAAAA);
+  Color greyBorder = Color(0xffd6d6d6);
 }

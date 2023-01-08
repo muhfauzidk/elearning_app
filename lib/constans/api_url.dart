@@ -11,4 +11,6 @@ class ApiUrl {
   static String latihanKerjakanSoal = "exercise/kerjakan";
   static String latihanSubmitJawaban = "exercise/input_jawaban";
   static String latihanSkor = "exercise/score_result";
+
+  static String banner = "event/list";
 }
