@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../constans/r.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  const MainPage({Key? key}) : super(key: key);
   static String route = "main_page";
 
   @override
@@ -25,13 +25,9 @@ class _MainPageState extends State<MainPage> {
           R.assets.icDiscuss,
           width: 30,
         ),
-        backgroundColor: R.colors.primary,
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => ChatPage(),
-            ),
-          );
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => ChatPage()));
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -40,8 +36,9 @@ class _MainPageState extends State<MainPage> {
         controller: _pc,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          HomePage(), // 0
-          ProfilePage(), // 1
+          HomePage(), //0
+          // ChatPage(),
+          ProfilePage(), //1
         ],
       ),
     );
@@ -49,94 +46,100 @@ class _MainPageState extends State<MainPage> {
 
   Container _buildBottomNavigation() {
     return Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0, 4),
-              blurRadius: 20,
-              color: Colors.black.withOpacity(0.06),
-            ),
-          ],
-        ),
-        child: BottomAppBar(
-          color: Colors.white,
-          child: Container(
-            height: 60,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Material(
-                      child: InkWell(
-                        onTap: () {
-                          index = 0;
-                          _pc.animateToPage(
-                            index,
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+            offset: Offset(0, 4),
+            blurRadius: 20,
+            color: Colors.black.withOpacity(0.06))
+      ]),
+      child: BottomAppBar(
+        color: Colors.white,
+        child: Container(
+          height: 60,
+          child: Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Material(
+                    child: InkWell(
+                      onTap: () {
+                        index = 0;
+                        _pc.animateToPage(index,
                             duration: Duration(milliseconds: 500),
-                            curve: Curves.bounceInOut,
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Image.asset(
+                            curve: Curves.bounceInOut);
+
+                        setState(() {});
+                      },
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            R.assets.icHome,
+                            height: 20,
+                            color: index == 0 ? null : Colors.grey,
+                          ),
+                          Text("Home"),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Material(
+                    child: InkWell(
+                      child: Column(
+                        children: [
+                          Opacity(
+                            opacity: 0,
+                            child: Image.asset(
                               R.assets.icHome,
                               height: 20,
                             ),
-                            Text("Home"),
-                          ],
-                        ),
+                          ),
+                          Text("Diskusi"),
+                        ],
                       ),
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Material(
-                      child: InkWell(
-                        child: Column(
-                          children: [
-                            Opacity(
-                              opacity: 0,
-                              child: Image.asset(
-                                R.assets.icDiscuss,
-                                height: 20,
-                              ),
-                            ),
-                            Text("Diskusi Soal"),
-                          ],
-                        ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Material(
+                    child: InkWell(
+                      onTap: () {
+                        print("profile");
+                        index = 1;
+                        _pc.animateToPage(
+                          index,
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                        );
+
+                        setState(() {});
+                      },
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            "assets/ic_profile.png",
+                            height: 20,
+                            color: index == 1 ? null : Colors.grey,
+                          ),
+                          Text("Profile"),
+                        ],
                       ),
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Material(
-                      child: InkWell(
-                        onTap: () {
-                          index = 1;
-                          _pc.animateToPage(
-                            index,
-                            duration: Duration(milliseconds: 500),
-                            curve: Curves.bounceInOut,
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Icon(Icons.person_rounded),
-                            Text("Profile"),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
