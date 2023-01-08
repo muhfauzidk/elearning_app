@@ -7,7 +7,6 @@ import 'package:elearning_app/repository/auth_api.dart';
 import 'package:elearning_app/views/login_page.dart';
 import 'package:elearning_app/views/main_page.dart';
 import 'package:elearning_app/views/register_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../constans/r.dart';
