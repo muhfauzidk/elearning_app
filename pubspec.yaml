@@ -37,8 +37,10 @@ dependencies:
   firebase_messaging: ^14.2.1
   flutter:
     sdk: flutter
+  flutter_html: ^2.2.1
   google_fonts: ^3.0.1
   google_sign_in: ^5.4.2
+  image_picker: ^0.8.6
   intl: ^0.17.0
   shared_preferences: ^2.0.15
 

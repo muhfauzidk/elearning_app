@@ -159,8 +159,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Container _buildHomeListMapel(MapelList? list) {
-    // print("list!.data.length");
-    // print(list?.data!.length);
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 21),
       child: Column(

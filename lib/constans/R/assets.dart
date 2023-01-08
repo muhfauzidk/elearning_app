@@ -11,4 +11,5 @@ class Assets {
   String imgUser = "assets/ic_avatar.png";
   String imgHome = "assets/img_home.png";
   String imgHomeBanner = "assets/img_banner.png";
+  String imgSuccess = "assets/img_success.png";
 }

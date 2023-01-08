@@ -2,6 +2,7 @@ import 'package:elearning_app/constans/r.dart';
 import 'package:elearning_app/models/network_response.dart';
 import 'package:elearning_app/models/paket_soal_list.dart';
 import 'package:elearning_app/repository/latihan_soal_api.dart';
+import 'package:elearning_app/views/main/latihan_soal/kerjakan_latihan_soal_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -84,11 +85,11 @@ class PaketSoalWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     builder: (context) => KerjakanLatihanSoalPage(id: data.exerciseId!),
-        //   ),
-        // );
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => KerjakanLatihanSoalPage(id: data.exerciseId!),
+          ),
+        );
       },
       child: Container(
         decoration: BoxDecoration(
