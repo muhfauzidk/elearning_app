@@ -4,13 +4,18 @@ import 'package:elearning_app/views/main/latihan_soal/mapel_page.dart';
 import 'package:elearning_app/views/main/latihan_soal/paket_soal_page.dart';
 import 'package:elearning_app/views/main_page.dart';
 import 'package:elearning_app/views/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'views/register_page.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      // options: DefaultFirebaseOptions.currentPlatform,
+      );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +28,8 @@ class MyApp extends StatelessWidget {
       title: 'Latihan Soal',
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
-        appBarTheme: AppBarTheme(backgroundColor: R.colors.primary),
+        appBarTheme:
+            AppBarTheme(backgroundColor: R.colors.primary, centerTitle: true),
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the

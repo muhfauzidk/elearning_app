@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:elearning_app/views/login_page.dart';
+import 'package:elearning_app/views/main_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../constans/r.dart';
@@ -14,10 +16,13 @@ class SplashScreen extends StatelessWidget {
     Timer(
       Duration(seconds: 5),
       () {
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(builder: (context) => LoginPage()),
-        // );
-        Navigator.of(context).pushReplacementNamed(LoginPage.route);
+        final user = FirebaseAuth.instance.currentUser;
+        if (user != null) {
+          //TODO: redirect to register or home
+          Navigator.of(context).pushReplacementNamed(MainPage.route);
+        } else {
+          Navigator.of(context).pushReplacementNamed(LoginPage.route);
+        }
       },
     );
 
