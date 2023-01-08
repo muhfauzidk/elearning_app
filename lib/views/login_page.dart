@@ -1,3 +1,8 @@
+import 'package:elearning_app/helpers/prefences_helpers.dart';
+import 'package:elearning_app/models/network_response.dart';
+import 'package:elearning_app/models/user_by_email.dart';
+import 'package:elearning_app/repository/auth_api.dart';
+import 'package:elearning_app/views/main_page.dart';
 import 'package:elearning_app/views/register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -78,14 +83,21 @@ class _LoginPageState extends State<LoginPage> {
 
                 final user = FirebaseAuth.instance.currentUser;
                 if (user != null) {
-                  Navigator.of(context).pushNamed(RegisterPage.route);
+                  final dataUser = await AuthApi().getUserByEmail();
+                  if (dataUser.status == Status.success) {
+                    final data = UserByEmail.fromJson(dataUser.data!);
+                    if (data.status == 1) {
+                      await PreferenceHelper().setUserData(data.data!);
+                      Navigator.of(context).pushNamed(MainPage.route);
+                    } else {
+                      Navigator.of(context).pushNamed(RegisterPage.route);
+                    }
+                  }
                 } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text("Gagal Masuk"),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("Gagal Masuk"),
+                    duration: Duration(seconds: 2),
+                  ));
                 }
               },
               backgroundColor: Colors.white,

@@ -1,5 +1,6 @@
-class Apiurl {
-  static String baseUrl = "https://ekskul.id/api/";
+class ApiUrl {
+  static String baseUrl = "https://edspert.widyaedu.com/";
+  static String apiKey = "18be70c0-4e4d-44ff-a475-50c51ece99a0";
 
   static String users = "users";
   static String userRegistrasi = "users/registrasi";
